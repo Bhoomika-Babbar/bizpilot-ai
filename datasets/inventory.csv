@@ -1,0 +1,4 @@
+product,current_stock,reorder_level
+Laptop,10,15
+Mouse,150,50
+Keyboard,8,20
