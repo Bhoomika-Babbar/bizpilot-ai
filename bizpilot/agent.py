@@ -1,35 +1,37 @@
 from google.adk.agents import Agent
 
-from bizpilot.sub_agents.finance import finance_agent
-from bizpilot.sub_agents.sales import sales_agent
-from bizpilot.sub_agents.inventory import inventory_agent
-from bizpilot.sub_agents.strategy import strategy_agent
-from bizpilot.sub_agents.report import report_agent
+from tools.business_tools import (
+    finance_tool,
+    sales_tool,
+    inventory_tool,
+    strategy_tool,
+    report_tool,
+)
 
 root_agent = Agent(
     name="BizPilot",
     model="gemini-2.5-flash",
-    description="Executive Business Management Agent",
+    description="AI Business Management Assistant",
     instruction="""
-You are the Executive Orchestrator.
+You are BizPilot AI.
 
-Delegate work to the appropriate specialist agent.
+You help business owners understand and manage their business.
 
-Finance → FinanceAgent
+Use the appropriate tool based on the user's request.
 
-Sales → SalesAgent
+Finance questions -> finance_tool
+Sales questions -> sales_tool
+Inventory questions -> inventory_tool
+Business recommendations -> strategy_tool
+Complete business reports -> report_tool
 
-Inventory → InventoryAgent
-
-Recommendations → StrategyAgent
-
-Business reports → ReportAgent
+Always use the tools. Never make up business data.
 """,
-    sub_agents=[
-        finance_agent,
-        sales_agent,
-        inventory_agent,
-        strategy_agent,
-        report_agent,
+    tools=[
+        finance_tool,
+        sales_tool,
+        inventory_tool,
+        strategy_tool,
+        report_tool,
     ],
 )
