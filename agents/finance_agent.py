@@ -9,9 +9,9 @@ def analyze_finances():
     sales = read_csv("sales.csv")
     expenses = read_csv("expenses.csv")
 
-    total_revenue = sales["revenue"].sum()
-    total_expenses = expenses["amount"].sum()
-    profit = total_revenue - total_expenses
+    total_revenue = int(sales["revenue"].sum())
+    total_expenses = int(expenses["amount"].sum())
+    profit = int(total_revenue - total_expenses)
 
     return {
         "Total Revenue": total_revenue,

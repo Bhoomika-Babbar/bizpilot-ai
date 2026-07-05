@@ -8,17 +8,17 @@ def analyze_sales():
 
     sales = read_csv("sales.csv")
 
-    total_revenue = sales["revenue"].sum()
+    total_revenue = int(sales["revenue"].sum())
 
     best_product = sales.loc[sales["units_sold"].idxmax()]
 
     worst_product = sales.loc[sales["units_sold"].idxmin()]
 
-    average_units = sales["units_sold"].mean()
+    average_units = float(sales["units_sold"].mean())
 
     return {
         "Total Revenue": total_revenue,
-        "Best Selling Product": best_product["product"],
-        "Worst Selling Product": worst_product["product"],
+        "Best Selling Product": str(best_product["product"]),
+        "Worst Selling Product": str(worst_product["product"]),
         "Average Units Sold": round(average_units, 2),
     }

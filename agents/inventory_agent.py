@@ -13,6 +13,6 @@ def analyze_inventory():
     ]
 
     return {
-        "Products to Reorder": low_stock["product"].tolist(),
-        "Total Low Stock Items": len(low_stock),
+        "Products to Reorder": [str(p) for p in low_stock["product"].tolist()],
+        "Total Low Stock Items": int(len(low_stock)),
     }
