@@ -134,12 +134,9 @@ streamlit run frontend/app.py
 
 # 📸 Application Preview
 
-Add screenshots here after deployment:
+## 📸 Dashboard
 
-* Dashboard
-* Finance Analysis
-* AI Assistant
-* Executive Report
+![Dashboard](assets/screenshots/dashboard.png)
 
 ---
 
