@@ -25,15 +25,18 @@ BizPilot AI automates business analysis using specialized AI agents. Each agent 
 # ✨ Features
 
 * 📊 Interactive Business Dashboard
+* 🤖 Google ADK Powered AI Agent
 * 💰 Finance Analysis
 * 📈 Sales Performance Analysis
 * 📦 Inventory Monitoring
 * 🧠 AI Business Recommendations
 * 🤖 AI Assistant
+* 📂 Upload Custom Business CSV Files
 * 📄 Executive Report Generator
 * 📥 Downloadable Business Report
 * 📉 Interactive Plotly Visualizations
 * 🏢 Multi-Agent Architecture
+* ☁️ Streamlit Cloud Deployment
 
 ---
 
