@@ -1,4 +1,8 @@
 product,current_stock,reorder_level
-Laptop,10,15
-Mouse,150,50
-Keyboard,8,20
+Laptop,12,20
+Mouse,18,25
+Keyboard,15,20
+Monitor,40,15
+Printer,8,12
+Headphones,22,15
+USB Cable,60,20

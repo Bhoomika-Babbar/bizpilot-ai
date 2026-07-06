@@ -1,4 +1,8 @@
-date,category,amount
-2026-06-01,Rent,5000
-2026-06-02,Salaries,12000
-2026-06-03,Marketing,2500
+category,amount
+Rent,10000
+Salaries,4500
+Marketing,1800
+Electricity,1200
+Internet,700
+Transport,900
+Software,400
