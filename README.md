@@ -84,6 +84,7 @@ bizpilot-ai/
 ├── datasets/
 ├── frontend/
 ├── tools/
+├── tests/
 │
 ├── main.py
 ├── requirements.txt
