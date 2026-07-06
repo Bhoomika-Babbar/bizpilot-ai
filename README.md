@@ -138,6 +138,22 @@ streamlit run frontend/app.py
 
 ![Dashboard](assets/screenshots/dashboard.png)
 
+## 💰 Finance
+
+![Finance](assets/screenshots/finance.png)
+
+## 📈  Sales
+
+![Sales](assets/screenshots/sales.png)
+
+## 🤖 AI Assistant
+
+![AI-Assitant](assets/screenshots/AI-assitant.png)
+
+## 📄 Executive Report
+
+![Executive-Report](assets/screenshots/Report.png)
+
 ---
 
 # 🔮 Future Enhancements
