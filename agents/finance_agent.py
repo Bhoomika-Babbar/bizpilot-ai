@@ -1,17 +1,21 @@
 from tools.csv_tools import read_csv
 
 
-def analyze_finances():
+def analyze_finances(sales_df=None, expenses_df=None):
     """
-    Reads sales and expense data and returns a financial summary.
+    Returns a financial summary.
+    Uses uploaded data if provided, otherwise reads the default CSV files.
     """
 
-    sales = read_csv("sales.csv")
-    expenses = read_csv("expenses.csv")
+    if sales_df is None:
+        sales_df = read_csv("sales.csv")
 
-    total_revenue = int(sales["revenue"].sum())
-    total_expenses = int(expenses["amount"].sum())
-    profit = int(total_revenue - total_expenses)
+    if expenses_df is None:
+        expenses_df = read_csv("expenses.csv")
+
+    total_revenue = int(sales_df["revenue"].sum())
+    total_expenses = int(expenses_df["amount"].sum())
+    profit = total_revenue - total_expenses
 
     return {
         "Total Revenue": total_revenue,

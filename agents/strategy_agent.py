@@ -3,10 +3,15 @@ from agents.sales_agent import analyze_sales
 from agents.inventory_agent import analyze_inventory
 
 
-def generate_strategy():
-    finance = analyze_finances()
-    sales = analyze_sales()
-    inventory = analyze_inventory()
+def generate_strategy(sales_df=None, expenses_df=None, inventory_df=None):
+    """
+    Generate AI business recommendations.
+    Uses uploaded data if provided.
+    """
+
+    finance = analyze_finances(sales_df, expenses_df)
+    sales = analyze_sales(sales_df)
+    inventory = analyze_inventory(inventory_df)
 
     recommendations = []
 

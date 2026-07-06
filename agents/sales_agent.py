@@ -1,20 +1,22 @@
 from tools.csv_tools import read_csv
 
 
-def analyze_sales():
+def analyze_sales(sales_df=None):
     """
     Analyze sales performance.
+    Uses uploaded data if provided, otherwise reads the default CSV.
     """
 
-    sales = read_csv("sales.csv")
+    if sales_df is None:
+        sales_df = read_csv("sales.csv")
 
-    total_revenue = int(sales["revenue"].sum())
+    total_revenue = int(sales_df["revenue"].sum())
 
-    best_product = sales.loc[sales["units_sold"].idxmax()]
+    best_product = sales_df.loc[sales_df["units_sold"].idxmax()]
 
-    worst_product = sales.loc[sales["units_sold"].idxmin()]
+    worst_product = sales_df.loc[sales_df["units_sold"].idxmin()]
 
-    average_units = float(sales["units_sold"].mean())
+    average_units = float(sales_df["units_sold"].mean())
 
     return {
         "Total Revenue": total_revenue,

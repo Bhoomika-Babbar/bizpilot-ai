@@ -1,3 +1,4 @@
+iimport pandas as pd
 import sys
 from pathlib import Path
 
@@ -71,6 +72,44 @@ with st.sidebar:
     st.caption("AI Business Intelligence")
     st.markdown("---")
 
+    st.sidebar.subheader("📂 Upload Business Data")
+
+    sales_file = st.sidebar.file_uploader(
+        "Sales CSV",
+        type=["csv"],
+    )
+
+    expenses_file = st.sidebar.file_uploader(
+        "Expenses CSV",
+        type=["csv"],
+    )
+
+    inventory_file = st.sidebar.file_uploader(
+        "Inventory CSV",
+        type=["csv"],
+    )
+
+    st.sidebar.markdown("---")
+
+    with st.sidebar.expander("📋 Expected CSV Format"):
+
+        st.markdown("""
+    ### Sales CSV
+    - product
+    - units_sold
+    - revenue
+
+    ### Expenses CSV
+    - category
+    - amount
+
+    ### Inventory CSV
+    - product
+    - current_stock
+    - reorder_level
+    """)
+
+
 page = st.sidebar.radio(
     "Navigation",
     [
@@ -84,12 +123,39 @@ page = st.sidebar.radio(
     ],
 )
 
-finance = analyze_finances()
-sales = analyze_sales()
-inventory = analyze_inventory()
 
-sales_df = read_csv("sales.csv")
-expenses_df = read_csv("expenses.csv")
+# ---------------- Load Business Data ----------------
+
+using_uploaded_data = any([
+    sales_file,
+    expenses_file,
+    inventory_file
+])
+
+if using_uploaded_data:
+    st.sidebar.success("✅ Using uploaded business data")
+else:
+    st.sidebar.info("📄 Using sample demo dataset")
+
+
+if sales_file:
+    sales_df = pd.read_csv(sales_file)
+else:
+    sales_df = read_csv("sales.csv")
+
+if expenses_file:
+    expenses_df = pd.read_csv(expenses_file)
+else:
+    expenses_df = read_csv("expenses.csv")
+
+if inventory_file:
+    inventory_df = pd.read_csv(inventory_file)
+else:
+    inventory_df = read_csv("inventory.csv")
+
+finance = analyze_finances(sales_df,expenses_df)
+sales = analyze_sales(sales_df)
+inventory = analyze_inventory(inventory_df)
 
 # ---------------- Dashboard ----------------
 
@@ -229,7 +295,7 @@ if page == "Dashboard":
 
     """
 
-        for item in generate_strategy():
+        for item in generate_strategy(sales_df,expenses_df,inventory_df):
             summary += f"• {item}\n"
 
         st.success(summary)
@@ -285,8 +351,6 @@ elif page == "Inventory":
 
         st.subheader("Products to Restock")
 
-        inventory_df = read_csv("inventory.csv")
-
         st.dataframe(
             inventory_df,
             use_container_width=True,
@@ -303,7 +367,7 @@ elif page == "Recommendations":
 
     st.title("🧠 AI Business Recommendations")
 
-    for i, item in enumerate(generate_strategy(), 1):
+    for i, item in enumerate(generate_strategy(sales_df,expenses_df,inventory_df,), 1):
         st.success(f"{i}. {item}")
 # ---------------- AI Assistant ----------------
 
@@ -381,7 +445,7 @@ Consider improving marketing or pricing.
 
             answer = "### 🤖 AI Recommendations\n\n"
 
-            for item in generate_strategy():
+            for item in generate_strategy(sales_df,expenses_df,inventory_df):
                 answer += f"✅ {item}\n\n"
 
         else:
@@ -405,7 +469,7 @@ else:
 
     st.title("📄 Executive Report")
 
-    report = generate_report()
+    report = generate_report(sales_df,expenses_df,inventory_df)
 
     st.code(report, language="text")
 

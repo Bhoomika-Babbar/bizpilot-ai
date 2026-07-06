@@ -4,11 +4,20 @@ from agents.inventory_agent import analyze_inventory
 from agents.strategy_agent import generate_strategy
 
 
-def generate_report():
-    finance = analyze_finances()
-    sales = analyze_sales()
-    inventory = analyze_inventory()
-    strategy = generate_strategy()
+def generate_report(sales_df=None, expenses_df=None, inventory_df=None):
+    """
+    Generate an executive business report.
+    Uses uploaded data if provided.
+    """
+
+    finance = analyze_finances(sales_df, expenses_df)
+    sales = analyze_sales(sales_df)
+    inventory = analyze_inventory(inventory_df)
+    strategy = generate_strategy(
+        sales_df,
+        expenses_df,
+        inventory_df,
+    )
 
     report = f"""
 ==============================

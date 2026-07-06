@@ -1,15 +1,17 @@
 from tools.csv_tools import read_csv
 
 
-def analyze_inventory():
+def analyze_inventory(inventory_df=None):
     """
     Analyze inventory levels and identify products that need reordering.
+    Uses uploaded data if provided, otherwise reads the default CSV.
     """
 
-    inventory = read_csv("inventory.csv")
+    if inventory_df is None:
+        inventory_df = read_csv("inventory.csv")
 
-    low_stock = inventory[
-        inventory["current_stock"] < inventory["reorder_level"]
+    low_stock = inventory_df[
+        inventory_df["current_stock"] < inventory_df["reorder_level"]
     ]
 
     return {
