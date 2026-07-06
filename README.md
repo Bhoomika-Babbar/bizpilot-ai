@@ -4,6 +4,10 @@
 
 BizPilot AI is an intelligent business analytics platform that helps businesses analyze their financial performance, sales trends, inventory status, and strategic opportunities using a multi-agent architecture. The application provides interactive dashboards, AI-generated recommendations, and executive reports through a modern Streamlit interface.
 
+## 🌐 Live Demo
+
+https://bizpilot-ai-1.streamlit.app/
+
 ---
 
 # 📌 Problem Statement
