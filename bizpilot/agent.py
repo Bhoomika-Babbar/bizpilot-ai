@@ -11,7 +11,7 @@ from tools.business_tools import (
 root_agent = Agent(
     name="BizPilot",
     model="gemini-2.5-flash",
-    description="AI Business Management Assistant",
+    description="AI-powered Multi-Agent Business Intelligence Assistant built using Google ADK.",
     instruction="""
 You are BizPilot AI.
 
